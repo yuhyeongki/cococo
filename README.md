@@ -41,15 +41,23 @@ npm start
 
 ---
 
-## 🌐 깃허브 페이지(GitHub Pages) 배포 시 안내
+## 🌐 깃허브(GitHub) 연동 및 배포 안내
 
-본 프로젝트는 `vite.config.ts`에 상대 경로(`base: './'`)가 적용되어 있어 GitHub Pages와 같은 정적 호스팅 서비스에서도 UI와 사운드, 감정 통계 기능이 완벽하게 렌더링됩니다.
+### 1. "Secret scanning alerts (1)" 경고가 뜰 때 해결법
+보내주신 화면의 `Security and quality (1)` 알림은 GitHub의 자동 비밀키 탐지 기능이 `firebase-applet-config.json`의 Firebase 클라이언트 식별자(`apiKey`)를 감지한 것입니다.
 
-1. 정적 빌드 생성:
-   ```bash
-   npm run build
-   ```
-2. 생성된 `dist` 폴더를 GitHub Pages 배포 브랜치(`gh-pages`)에 업로드하거나 GitHub Actions 워크플로우를 통해 배포하시면 빈 화면 없이 정상 실행됩니다.
+- **안전 여부**: Firebase 웹 클라이언트 키(`AIzaSy...`)는 원래 브라우저에서 프로젝트를 식별하기 위한 공개 식별자이므로 유출되어도 보안 문제가 발생하지 않습니다.
+- **경고 해제 방법**:
+  1. 깃허브 화면에서 **`Secret scanning alerts`** 옆의 **`View detected secrets`** 클릭
+  2. 감지된 항목(`Google API key in firebase-applet-config.json`) 클릭
+  3. 우측 상단의 **"Close alert"** 클릭 후 사유로 **"False positive (오탐)"** 또는 **"Used in tests"** 선택
+
+### 2. GitHub Pages 자동 배포 (웹사이트 띄우기)
+`.github/workflows/deploy.yml` 파일이 저장소에 추가되어 있어 푸시 시 자동으로 빌드 및 배포됩니다:
+1. 깃허브 저장소 상단 메뉴의 **`Settings`** 클릭
+2. 좌측 메뉴에서 **`Pages`** 선택
+3. **Build and deployment > Source** 항목을 `Deploy from a branch`에서 **`GitHub Actions`**로 변경
+4. 변경 즉시 1~2분 내로 나만의 웹사이트 주소(`https://<아이디>.github.io/<저장소명>/`)가 상단에 생성되어 접속할 수 있습니다.
 
 ---
 
