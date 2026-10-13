@@ -1,0 +1,6 @@
+{
+  "name": "마음쉼터 - 교사를 위한 따뜻한 공감 상담소",
+  "description": "지친 교사의 마음을 보듬는 AI 전문 상담, 매일의 짧은 명상과 격려, 감정 변화 통계 대시보드, 힐링 자연음 사운드스케이프 및 Google Chat 연동 플랫폼",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

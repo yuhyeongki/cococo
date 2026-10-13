@@ -1,11 +1,78 @@
-<div align="center">
+# 마음쉼터 (Mind Shelter) - 교사를 위한 따뜻한 공감 상담소
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+지친 선생님의 마음을 어루만져 주는 AI 전문 상담, 매일의 짧은 명상과 격려, 감정 변화 통계 대시보드, 힐링 자연음 사운드스케이프 및 Google Chat 연동 플랫폼입니다.
 
-  <h1>Built with AI Studio</h2>
+---
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## 🚀 빠른 시작 가이드 (로컬 실행)
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+깃허브(GitHub)에서 프로젝트를 클론받은 후 로컬 컴퓨터에서 실행하는 방법입니다.
 
-</div>
+### 1. 패키지 설치
+터미널을 열고 다음 명령어를 실행하여 필요한 의존성을 설치합니다:
+```bash
+npm install
+```
+
+### 2. 환경 변수 설정 (.env)
+루트 디렉토리에 `.env` 파일을 생성하고 Gemini API 키를 설정합니다. (`.env.example` 파일 참고)
+```env
+GEMINI_API_KEY="선생님의_GEMINI_API_KEY"
+PORT=3000
+```
+> **참고**: API 키가 없어도 기본 내장 심리 상담 답변과 명상, 통계, 힐링 자연음 사운드는 정상 작동합니다.
+
+### 3. 개발 서버 실행
+```bash
+npm run dev
+```
+서버가 시작되면 브라우저에서 `http://localhost:3000`으로 접속합니다.
+
+- 프론트엔드 전용으로만 빠르게 띄우고 싶다면:
+```bash
+npm run dev:client
+```
+
+### 4. 프로덕션 빌드 & 실행
+```bash
+npm run build
+npm start
+```
+
+---
+
+## 🌐 깃허브 페이지(GitHub Pages) 배포 시 안내
+
+본 프로젝트는 `vite.config.ts`에 상대 경로(`base: './'`)가 적용되어 있어 GitHub Pages와 같은 정적 호스팅 서비스에서도 UI와 사운드, 감정 통계 기능이 완벽하게 렌더링됩니다.
+
+1. 정적 빌드 생성:
+   ```bash
+   npm run build
+   ```
+2. 생성된 `dist` 폴더를 GitHub Pages 배포 브랜치(`gh-pages`)에 업로드하거나 GitHub Actions 워크플로우를 통해 배포하시면 빈 화면 없이 정상 실행됩니다.
+
+---
+
+## 🌟 주요 기능
+
+1. **상황별 교사 전문 AI 상담실 (5대 탭)**
+   - 학부모 민원 대응 (교권 침해, 악성 민원, 퇴근 후 연락)
+   - 학생 지도 및 생활상담 (수업 방해, 무기력, 반항 학생 지도)
+   - 동료 교사 및 교직원 관계 (교무실 소통, 업무 분장, 관리자 갈등)
+   - 수업 및 과중한 업무 (공문 처리, NEIS 입력, 행사 기획)
+   - 소진 및 번아웃 극복 (열정 고갈, 회의감 치유, 쉼의 권리)
+
+2. **매일의 쉼 & 1분 마음챙김 호흡**
+   - 매일 전하는 따뜻한 격려 글귀 및 실천 팁
+   - 4-4-6-2 박스 호흡 가이드 애니메이션
+
+3. **감정 변화 통계 & 일기 대시보드**
+   - 5단계 기분 체크인 및 상황 태그 기록
+   - 최근 7일 / 30일 SVG 감정 추이 시각화 그래프 및 맞춤 심리 리포트
+
+4. **힐링 사운드스케이프 (Web Audio API)**
+   - 포근한 빗소리, 솔바람 숲길, 노을빛 파도, 모닥불, 432Hz 싱잉볼 명상음
+   - 개별 볼륨 슬라이더 및 자동 종료 타이머 탑재
+
+5. **Google Chat 연동**
+   - 따뜻한 격려 문구와 상담 성찰 내용을 Google Chat 스페이스로 안전하게 공유
